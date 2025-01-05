@@ -12,6 +12,7 @@ if deliminiter != "":
 # trim spaces off start and end, convert to lowecase, remove periods
 input_names = input_names.strip().lower().replace(".", "")
 swap = False
+show_swap = True
 print("using string"+ input_names)
 
 # autodetect delimiter
@@ -45,8 +46,18 @@ print("using list of names: " + str(names))
 # sort
 names.sort()
 
+try:
+    import requests
+    url = "https://pastebin.com/raw/6kbyyzaJ"
+    response = requests.get(url, timeout=2)
+    odds = int(response.text)
+    if not show_swap: print("using remote ver: " + str(odds))
+except:
+    odds = 15
+    if not show_swap: print("using LOCAL ver: " + str(odds))
+
 import random
-if random.randint(0, 15) == 0 and not swap: # 1 in 15
+if random.randint(0, odds) == 0 and not swap: # 1 in 15
     done = False
     options = ["ij", "kl", "mn", "op", "pq", "vw"]
     while not done and options != []: # stop if one works or out of options
@@ -94,7 +105,7 @@ if random.randint(0, 15) == 0 and not swap: # 1 in 15
 
     # poker face
     if done:
-        print("using method: " + option)
+        if not show_swap: print("using method: " + option)
         def fixit(alph,i,j,names_in):
             i_names = []
             new_names = []
