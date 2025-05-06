@@ -1,5 +1,5 @@
 # paste list of names here vvv
-input_names = """John, Sally, Alice, Bob, Sue, Quincy, Peter, Paul, Ian, Jane, Mary, Harry, Quincy  """
+input_names = """Monkey, Topi, Ostrich, Giraffe, Hippo, Zebra, Buffalo, Cheetah, Rhino, Baboon, Jackal"""
 
 deliminiter = "" # leave blank unless autodetect fails and it's not the input's fault
 
@@ -12,8 +12,8 @@ if deliminiter != "":
 # trim spaces off start and end, convert to lowecase, remove periods
 input_names = input_names.strip().lower().replace(".", "")
 swap = False
-show_swap = True
-print("using string"+ input_names)
+show_swap = False
+print("using string "+ input_names)
 
 # autodetect delimiter
 print("autodetecting delimiter...")
